@@ -1,0 +1,17 @@
+<head>
+    <title>Home</title>
+</head>
+
+<h1>Test home page.</h1>
+
+<h2>Random movie</h2>
+<% movie = @random_movie %>
+
+<p><%=movie.title %></p>
+<p><%=movie.description %></p>
+<p><%=movie.release_year %></p>
+
+
+<h2>Time</h2>
+<p><%= "Current time: #{Time.now}" %></p>
+
