@@ -10,20 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_29_113100) do
-  create_table "actor", primary_key: "actor_id", id: :decimal, force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2024_01_31_083726) do
+  create_table "actor", primary_key: "actor_id", force: :cascade do |t|
     t.string "first_name", limit: 45, null: false
     t.string "last_name", limit: 45, null: false
-    t.datetime "last_update", precision: nil, null: false
+    t.datetime "last_update", default: -> { "datetime('now')" }
     t.index ["last_name"], name: "idx_actor_last_name"
-  end
-
-  create_table "actors", force: :cascade do |t|
-    t.integer "actor_id"
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "address", primary_key: "address_id", force: :cascade do |t|
@@ -80,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_113100) do
     t.decimal "replacement_cost", precision: 5, scale: 2, default: "19.99", null: false
     t.string "rating", limit: 10, default: "G"
     t.string "special_features", limit: 100
-    t.datetime "last_update", precision: nil, null: false
+    t.datetime "last_update", default: -> { "datetime('now')" }
     t.index ["language_id"], name: "idx_fk_language_id"
     t.index ["original_language_id"], name: "idx_fk_original_language_id"
   end
@@ -117,14 +109,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_113100) do
   create_table "language", primary_key: "language_id", force: :cascade do |t|
     t.string "name", limit: 20, null: false
     t.datetime "last_update", precision: nil, null: false
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.integer "film_id"
-    t.string "title"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "payment", primary_key: "payment_id", force: :cascade do |t|
