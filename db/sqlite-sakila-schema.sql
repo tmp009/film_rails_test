@@ -16,7 +16,7 @@ http://www.etl-tools.com
 --DROP TABLE actor;
 
 CREATE TABLE actor (
-  actor_id numeric NOT NULL ,
+  actor_id int NOT NULL ,
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45) NOT NULL,
   last_update TIMESTAMP NOT NULL,
